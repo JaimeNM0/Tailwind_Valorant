@@ -6,7 +6,6 @@
     <title>Valorant</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="./img/valorant_icono_rojo.png">
-    <!--<link rel="stylesheet" href="index.css">-->
     <script type="text/javascript" src="./main.js" defer></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,34 +35,45 @@
                 </span>
             </div>
             <div class="flex justify-end h-auto w-44 pr-4">
-                <button id="modo" class="w-9"><img id="img_modo" src="./img/luna.png"></button>
+                <button id="mode" class="w-9"><img id="imgMode" src="./img/luna.png"></button>
             </div>
         </div>
     </header>
     <main class="mx-10 my-12">
-        <div class="flex justify-center">
-            <div id="miniaturas" class="flex flex-wrap justify-center w-[23%]"></div>
-            <div id="imagen_completa" class="flex justify-center">
-                <img id="img_completa" src="">
+        <!--<div id="eyelashes" class="flex">
+            <div class="">
+                <button id="buttonCharacters" class="">Characters</button>
+            </div>
+            <div class="">
+                <button id="buttonWeapons" class="">Weapons</button>
+            </div>
+            <div class="">
+                <button id="buttonSkins" class="">Skins</button>
+            </div>
+        </div>-->
+        <div id="characters" class="flex justify-center">
+            <div id="characterMiniatures" class="flex flex-wrap justify-center w-[23%]"></div>
+            <div id="fullPictureCharacter" class="flex justify-center">
+                <img id="imgFullPictureCharacter" src="">
             </div>
             <div class="flex flex-col items-center w-2/5 gap-6">
                 <div class="mb-4">
-                    <span id="nombre" class="text-6xl text-red-600 dark:text-blue-400"></span>
+                    <span id="nameCharacter" class="text-6xl text-red-600 dark:text-blue-400"></span>
                 </div>
                 <div class="mx-6">
-                    <span id="descripcion" class="text-sm text-slate-700 dark:text-slate-300 text-justify"></span>
+                    <span id="descriptionCharacter" class="text-sm text-slate-700 dark:text-slate-300 text-justify"></span>
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="flex flex-row justify-between gap-4">
                         <div class="flex flex-col items-center gap-2 w-auto">
-                            <span id="habilidad1"
+                            <span id="abilityCharacter1"
                                 class="text-xl text-center whitespace-wrap text-black dark:text-white"></span>
                             <div class="bg-slate-900 p-1 rounded-xl">
-                                <img id="img_habilidad1" class="w-20" src="">
+                                <img id="imgAbilityCharacter1" class="w-20" src="">
                             </div>
                         </div>
                         <div class="flex flex-col items-center gap-2 w-auto">
-                            <span id="habilidad2"
+                            <span id="abilityCharacter2"
                                 class="text-xl text-center whitespace-wrap text-black dark:text-white"></span>
                             <div class="bg-slate-900 p-1 rounded-xl">
                                 <img id="img_habilidad2" class="w-20" src="">
@@ -87,14 +97,21 @@
                 </div>
                 <div class="flex flex-col items-center gap-2">
                     <div>
-                        <span id="role" class="text-4xl text-black dark:text-white"></span>
+                        <span id="roleCharacter" class="text-4xl text-black dark:text-white"></span>
                     </div>
                     <div class="mx-6">
-                        <span id="role_descripcion" class="text-sm text-slate-700 dark:text-slate-300 text-justify"></span>
+                        <span id="roleDescriptionCharacter" class="text-sm text-slate-700 dark:text-slate-300 text-justify"></span>
                     </div>
                 </div>
             </div>
         </div>
+        <!--<div id="armas" class="flex justify-center">
+            <div id="miniaturas" class="flex flex-wrap justify-center w-[23%]"></div>
+            <div id="imagen_completa" class="flex justify-center">
+                <img id="img_completa" src="">
+            </div>
+            <div class="flex flex-col items-center w-2/5 gap-6"></div>
+        </div>-->
     </main>
 </body>
 
