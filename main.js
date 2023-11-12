@@ -7,16 +7,79 @@ const modeSwitching = () => {
     buttonMode.addEventListener('click', function () {
         let html = document.getElementById('html');
         let imgMode = document.getElementById('imgMode');
+        let imgCharacter = document.getElementById("imgCharacter");
+        let imgSkin = document.getElementById("imgSkin");
+        let imgVideo = document.getElementById("imgVideo");
         if (html.className === 'dark') {
             html.className = 'light';
             document.documentElement.classList.remove('dark');
             imgMode.src = './img/sol.png';
+            imgCharacter.src = './img/character_black.png';
+            imgSkin.src = './img/skin_black.png';
+            imgVideo.src = './img/video_black.png';
         } else {
             html.className = 'dark';
             document.documentElement.classList.add('dark');
             imgMode.src = './img/luna.png';
+            imgCharacter.src = './img/character_white.png';
+            imgSkin.src = './img/skin_white.png';
+            imgVideo.src = './img/video_white.png';
         }
     });
+}
+
+const appearCharacters = () => {
+    let buttonCharacter = document.getElementById("buttonCharacter");
+    buttonCharacter.addEventListener('click', () => {
+        let divCharacters = document.getElementById("characters");
+        let divSkins = document.getElementById("skins");
+        let divVideo = document.getElementById("video");
+        divCharacters.classList.remove("hidden");
+        divSkins.classList.add("hidden");
+        divVideo.classList.add("hidden");
+    });
+}
+
+const appearSkins = () => {
+    let buttonSkin = document.getElementById("buttonSkin");
+    buttonSkin.addEventListener('click', () => {
+        let divCharacters = document.getElementById("characters");
+        let divSkins = document.getElementById("skins");
+        let divVideo = document.getElementById("video");
+        divSkins.classList.remove("hidden");
+        divCharacters.classList.add("hidden");
+        divVideo.classList.add("hidden");
+    });
+}
+
+const appearDirectSkins = () => {
+    let divCharacters = document.getElementById("characters");
+    let divSkins = document.getElementById("skins");
+    let divVideo = document.getElementById("video");
+    divSkins.classList.remove("hidden");
+    divCharacters.classList.add("hidden");
+    divVideo.classList.add("hidden");
+}
+
+const appearVideo = () => {
+    let buttonVideo = document.getElementById("buttonVideo");
+    buttonVideo.addEventListener('click', () => {
+        let divCharacters = document.getElementById("characters");
+        let divSkins = document.getElementById("skins");
+        let divVideo = document.getElementById("video");
+        divVideo.classList.remove("hidden");
+        divCharacters.classList.add("hidden");
+        divSkins.classList.add("hidden");
+    });
+}
+
+const appearDirectVideo = () => {
+    let divCharacters = document.getElementById("characters");
+    let divSkins = document.getElementById("skins");
+    let divVideo = document.getElementById("video");
+    divVideo.classList.remove("hidden");
+    divCharacters.classList.add("hidden");
+    divSkins.classList.add("hidden");
 }
 
 const loadAgents = () => {
@@ -116,6 +179,7 @@ const generaWeapons = (weapons) => {
             element.skins.forEach((skin) => {
                 loadAndGenerateWeaponsSkinsData(skin, miniatureSkins);
             });
+            appearDirectSkins();
         });
 
         miniatureWeapons.appendChild(arma);
@@ -151,6 +215,7 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
                     iframe.style.width = '1000px';
                     iframe.style.height = '570px';
                     divVideo.appendChild(iframe);
+                    appearDirectVideo();
                 }
             });
 
@@ -164,5 +229,8 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
 
 window.onload = function () {
     modeSwitching();
+    appearCharacters();
+    appearSkins();
+    appearVideo();
     loadAgents();
 }

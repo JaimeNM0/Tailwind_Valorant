@@ -40,18 +40,25 @@
         </div>
     </header>
     <main class="mx-10"><!--mx-10 my-12-->
-        <div id="eyelashes" class="flex">
-            <div class="">
-                <button id="buttonCharacters" class="">Characters</button>
+        <div id="eyelashes" class="flex gap-2 pb-3 ml-1.5">
+            <div id="buttonCharacter"
+                class="flex justify-center items-center border-2 border-black dark:border-white px-4">
+                <button class="w-9">
+                    <img id="imgCharacter" src="./img/character_white.png">
+                </button>
             </div>
             <!--<div class="">
                 <button id="buttonWeapons" class="">Weapons</button>
             </div>-->
-            <div class="">
-                <button id="buttonSkins" class="">Skins</button>
+            <div id="buttonSkin" class="flex justify-center items-center border-2 border-black dark:border-white px-4">
+                <button class="w-9">
+                    <img id="imgSkin" src="./img/skin_white.png">
+                </button>
             </div>
-            <div class="">
-                <button id="buttonVideo" class="">Video</button>
+            <div id="buttonVideo" class="flex justify-center items-center border-2 border-black dark:border-white px-4">
+                <button class="w-9">
+                    <img id="imgVideo" src="./img/video_white.png">
+                </button>
             </div>
         </div>
         <div id="characters" class="flex flex-col justify-center">
@@ -120,14 +127,14 @@
             </div>
             <div class="flex flex-col items-center w-2/5 gap-6"></div>
         </div>-->
-        <div id="skins" class="flex justify-center">
+        <div id="skins" class="hidden flex justify-center">
             <div id="miniatureSkins" class="flex flex-wrap justify-center w-[23%]"></div>
             <div id="fullPictureSkin" class="flex justify-center">
                 <img id="imgFullPictureSkin" src="">
             </div>
             <div class="flex flex-col items-center w-2/5 gap-6"></div>
         </div>
-        <div id="video"></div>
+        <div id="video" class="hidden flex justify-center"></div>
     </main>
 </body>
 
