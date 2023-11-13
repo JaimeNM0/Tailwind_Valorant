@@ -102,7 +102,7 @@ const loadAgents = () => {
                     miniature.style.border = '1px solid #888';
 
                     miniature.addEventListener('click', function () {
-                        characterThumbnailInformation(element);
+                        characterInformation(element);
                         loadWeapons();
                     });
 
@@ -117,7 +117,7 @@ const loadAgents = () => {
     xhr.send();
 }
 
-const characterThumbnailInformation = (character) => {
+const characterInformation = (character) => {
     let imgFullPictureCharacter = document.getElementById('imgFullPictureCharacter');
     let nameCharacter = document.getElementById('nameCharacter');
     let descriptionCharacter = document.getElementById('descriptionCharacter');
@@ -156,24 +156,27 @@ const loadWeapons = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.response.data);
             let weapons = xhr.response.data;
-            generaWeapons(weapons);
+            generateWeapons(weapons);
         }
     }
 
     xhr.send();
 }
 
-const generaWeapons = (weapons) => {
+const generateWeapons = (weapons) => {
     let miniatureWeapons = document.getElementById('miniatureWeapons');
     miniatureWeapons.innerHTML = '';
 
     weapons.forEach(element => {
-        const arma = document.createElement('img');
-        arma.style.width = '80px';
-        arma.src = element.displayIcon;
+        const imgWeapon = document.createElement('img');
+        imgWeapon.style.width = '80px';
+        imgWeapon.src = element.displayIcon;
 
-        arma.addEventListener('click', function () {
+        imgWeapon.addEventListener('click', function () {
+            let divVideo = document.getElementById('video');
+            divVideo.innerHTML = '';
             console.log(element.uuid);
+            weaponsInformation(element);
             let miniatureSkins = document.getElementById('miniatureSkins');
             miniatureSkins.innerHTML = '';
             element.skins.forEach((skin) => {
@@ -182,9 +185,55 @@ const generaWeapons = (weapons) => {
             appearDirectSkins();
         });
 
-        miniatureWeapons.appendChild(arma);
+        miniatureWeapons.appendChild(imgWeapon);
     });
 
+}
+
+const weaponsInformation = (weapon) => {
+    let imgFullPictureSkin = document.getElementById('imgFullPictureSkin');
+    let nameWeapon = document.getElementById('nameWeapon');
+    let categoryWeapon = document.getElementById('categoryWeapon');
+
+    let shotgunPelletCount = document.getElementById('shotgunPelletCount');
+    let fireRate = document.getElementById('fireRate');
+    let firstBulletAccuracy = document.getElementById('firstBulletAccuracy');
+    let runSpeedMultiplier = document.getElementById('runSpeedMultiplier');
+    let equipTimeSeconds = document.getElementById('equipTimeSeconds');
+    let magazineSize = document.getElementById('magazineSize');
+    let reloadTimeSeconds = document.getElementById('reloadTimeSeconds');
+    let costWeapon = document.getElementById('costWeapon');
+
+    let bodyDamage = document.getElementById('bodyDamage');
+    let headDamage = document.getElementById('headDamage');
+    let legDamage = document.getElementById('legDamage');
+    let rangeStartMeters = document.getElementById('rangeStartMeters');
+    let rangeEndMeters = document.getElementById('rangeEndMeters');
+
+    imgFullPictureSkin.innerHTML = '';
+    imgFullPictureSkin.style.width = '512px';
+    //imgFullPictureSkin.style.height = '200px';
+    imgFullPictureSkin.src = weapon.displayIcon;
+    nameWeapon.innerHTML = weapon.displayName;
+
+    if (weapon.weaponStats !== null) {
+        categoryWeapon.innerHTML = weapon.shopData.category;
+
+        shotgunPelletCount.innerHTML = weapon.weaponStats.shotgunPelletCount;
+        fireRate.innerHTML = weapon.weaponStats.fireRate;
+        firstBulletAccuracy.innerHTML = weapon.weaponStats.firstBulletAccuracy;
+        runSpeedMultiplier.innerHTML = weapon.weaponStats.runSpeedMultiplier;
+        equipTimeSeconds.innerHTML = weapon.weaponStats.equipTimeSeconds;
+        magazineSize.innerHTML = weapon.weaponStats.magazineSize;
+        reloadTimeSeconds.innerHTML = weapon.weaponStats.reloadTimeSeconds;
+        costWeapon.innerHTML = weapon.shopData.cost;
+
+        bodyDamage.innerHTML = weapon.weaponStats.damageRanges[0].bodyDamage;
+        headDamage.innerHTML = weapon.weaponStats.damageRanges[0].headDamage;
+        legDamage.innerHTML = weapon.weaponStats.damageRanges[0].legDamage;
+        rangeStartMeters.innerHTML = weapon.weaponStats.damageRanges[0].rangeStartMeters;
+        rangeEndMeters.innerHTML = weapon.weaponStats.damageRanges[0].rangeEndMeters;
+    }
 }
 
 const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
