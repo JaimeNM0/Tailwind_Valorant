@@ -31,9 +31,12 @@ const modeSwitching = () => {
 const appearCharacters = () => {
     let buttonCharacter = document.getElementById("buttonCharacter");
     buttonCharacter.addEventListener('click', () => {
+        backgroundButtons(buttonCharacter);
+        let spanSelector = document.getElementById("selector");
         let divCharacters = document.getElementById("characters");
         let divSkins = document.getElementById("skins");
         let divVideo = document.getElementById("video");
+        spanSelector.innerHTML = 'CHARACTER SELECTOR';
         divCharacters.classList.remove("hidden");
         divSkins.classList.add("hidden");
         divVideo.classList.add("hidden");
@@ -43,9 +46,12 @@ const appearCharacters = () => {
 const appearSkins = () => {
     let buttonSkin = document.getElementById("buttonSkin");
     buttonSkin.addEventListener('click', () => {
+        backgroundButtons(buttonSkin);
+        let spanSelector = document.getElementById("selector");
         let divCharacters = document.getElementById("characters");
         let divSkins = document.getElementById("skins");
         let divVideo = document.getElementById("video");
+        spanSelector.innerHTML = 'SKIN SELECTOR';
         divSkins.classList.remove("hidden");
         divCharacters.classList.add("hidden");
         divVideo.classList.add("hidden");
@@ -53,9 +59,13 @@ const appearSkins = () => {
 }
 
 const appearDirectSkins = () => {
+    let buttonSkin = document.getElementById("buttonSkin");
+    backgroundButtons(buttonSkin);
+    let spanSelector = document.getElementById("selector");
     let divCharacters = document.getElementById("characters");
     let divSkins = document.getElementById("skins");
     let divVideo = document.getElementById("video");
+    spanSelector.innerHTML = 'SKIN SELECTOR';
     divSkins.classList.remove("hidden");
     divCharacters.classList.add("hidden");
     divVideo.classList.add("hidden");
@@ -64,9 +74,12 @@ const appearDirectSkins = () => {
 const appearVideo = () => {
     let buttonVideo = document.getElementById("buttonVideo");
     buttonVideo.addEventListener('click', () => {
+        backgroundButtons(buttonVideo);
+        let spanSelector = document.getElementById("selector");
         let divCharacters = document.getElementById("characters");
         let divSkins = document.getElementById("skins");
         let divVideo = document.getElementById("video");
+        spanSelector.innerHTML = 'SKIN VIDEO';
         divVideo.classList.remove("hidden");
         divCharacters.classList.add("hidden");
         divSkins.classList.add("hidden");
@@ -74,12 +87,31 @@ const appearVideo = () => {
 }
 
 const appearDirectVideo = () => {
+    let buttonVideo = document.getElementById("buttonVideo");
+    backgroundButtons(buttonVideo);
+    let spanSelector = document.getElementById("selector");
     let divCharacters = document.getElementById("characters");
     let divSkins = document.getElementById("skins");
     let divVideo = document.getElementById("video");
+    spanSelector.innerHTML = 'SKIN VIDEO';
     divVideo.classList.remove("hidden");
     divCharacters.classList.add("hidden");
     divSkins.classList.add("hidden");
+}
+
+const backgroundButtons = (button) => {
+    let buttonCharacter = document.getElementById("buttonCharacter");
+    let buttonSkin = document.getElementById("buttonSkin");
+    let buttonVideo = document.getElementById("buttonVideo");
+    buttonCharacter.classList.remove('bg-red-400');
+    buttonCharacter.classList.remove('dark:bg-blue-400');
+    buttonSkin.classList.remove('bg-red-400');
+    buttonSkin.classList.remove('dark:bg-blue-400');
+    buttonVideo.classList.remove('bg-red-400');
+    buttonVideo.classList.remove('dark:bg-blue-400');
+
+    button.classList.add('bg-red-400');
+    button.classList.add('dark:bg-blue-400');
 }
 
 const loadAgents = () => {
@@ -170,11 +202,13 @@ const generateWeapons = (weapons) => {
     weapons.forEach(element => {
         const imgWeapon = document.createElement('img');
         imgWeapon.style.width = '80px';
+        //imgWeapon.style.height = '80px';
         imgWeapon.src = element.displayIcon;
 
         imgWeapon.addEventListener('click', function () {
             let divVideo = document.getElementById('video');
             divVideo.innerHTML = '';
+            spanVideo(divVideo);
             console.log(element.uuid);
             weaponsInformation(element);
             let miniatureSkins = document.getElementById('miniatureSkins');
@@ -251,10 +285,13 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
             const imgSkin = document.createElement('img');
             imgSkin.style.width = '100px';
             imgSkin.style.height = '80px';
+            imgSkin.style.border = '1px solid #888';
             imgSkin.src = skin.displayIcon;
 
             imgSkin.addEventListener('click', function () {
-                console.log(skinDetail.streamedVideo);
+                //console.log(skinDetail);
+                let imgFullPictureSkin = document.getElementById('imgFullPictureSkin');
+                imgFullPictureSkin.src = skinDetail.displayIcon;
                 let divVideo = document.getElementById('video');
                 divVideo.innerHTML = '';
 
@@ -265,6 +302,8 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
                     iframe.style.height = '570px';
                     divVideo.appendChild(iframe);
                     appearDirectVideo();
+                } else {
+                    spanVideo(divVideo);
                 }
             });
 
@@ -275,6 +314,14 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
     xhr.send();
 }
 
+const spanVideo = (divVideo) => {
+    const span = document.createElement('span');
+    span.innerHTML = 'There isn\'t a video';
+    span.classList.add('text-2xl');
+    span.classList.add('text-black');
+    span.classList.add('dark:text-white');
+    divVideo.appendChild(span);
+}
 
 window.onload = function () {
     modeSwitching();

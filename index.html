@@ -30,7 +30,7 @@
                 <img class="h-auto w-44" src="./img/valorant_logo.png">
             </div>
             <div>
-                <span class="text-4xl font-mono text-center text-cyan-500 dark:text-yellow-300">
+                <span id="selector" class="text-4xl font-mono text-center text-cyan-500 dark:text-yellow-300">
                     CHARACTER SELECTOR
                 </span>
             </div>
@@ -42,7 +42,7 @@
     <main class="mx-10"><!--mx-10 my-12-->
         <div id="eyelashes" class="flex gap-2 pb-3 ml-1.5">
             <div id="buttonCharacter"
-                class="flex justify-center items-center border-2 border-black dark:border-white px-4">
+                class="flex justify-center items-center border-2 border-black dark:border-white px-4 bg-red-400 dark:bg-blue-400">
                 <button class="w-9">
                     <img id="imgCharacter" src="./img/character_white.png">
                 </button>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div id="miniatureWeapons" class="flex flex-wrap justify-center mt-6"></div>
+            <div id="miniatureWeapons" class="flex max-w-screen-2xl mt-4 overflow-auto"></div>
         </div>
         <!--<div id="weapons" class="flex justify-center">
             <div id="miniatureWeapons" class="flex flex-wrap justify-center w-[23%]"></div>
@@ -128,8 +128,8 @@
             <div class="flex flex-col items-center w-2/5 gap-6"></div>
         </div>-->
         <div id="skins" class="hidden flex justify-center gap-4">
-            <div id="miniatureSkins" class="flex flex-wrap justify-center w-2/5"></div>
-            <div class="flex flex-col items-center w-3/5 gap-7">
+            <div id="miniatureSkins" class="flex flex-wrap justify-center w-[23%] max-h-[78vh] overflow-auto"></div>
+            <div class="flex flex-col items-center w-[77%] gap-7">
                 <div class="flex flex-row w-[100%]">
                     <div id="fullPictureSkin" class="flex justify-center w-[50%]"><!--flex justify-center-->
                         <img id="imgFullPictureSkin" class="max-h-[180px]" src="">
@@ -143,136 +143,143 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col items-center gap-4 w-[100%]">
-                    <div>
-                        <span class="text-3xl text-center text-black dark:text-white">Stats</span>
-                    </div>
-                    <div class="flex flex-col justify-between gap-2 w-[100%]">
-                        <div class="flex flex-row justify-center items-center w-[100%]">
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Shotgun Pellet
-                                        Count</span>
+                <div class="flex flex-row w-[100%]">
+                    <div class="flex flex-col items-center gap-4 w-[100%]">
+                        <div>
+                            <span class="text-3xl text-center text-black dark:text-white">Stats</span>
+                        </div>
+                        <div class="flex flex-row justify-between gap-4 w-[100%]">
+                            <div class="flex flex-col justify-center items-center w-[100%] gap-2">
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Shotgun Pellet
+                                            Count</span>
+                                    </div>
+                                    <div>
+                                        <span id="shotgunPelletCount"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span id="shotgunPelletCount"
-                                        class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Fire Rate</span>
+                                    </div>
+                                    <div>
+                                        <span id="fireRate" class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">First Bullet
+                                            Accuracy</span>
+                                    </div>
+                                    <div>
+                                        <span id="firstBulletAccuracy"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Run Speed
+                                            Multiplier</span>
+                                    </div>
+                                    <div>
+                                        <span id="runSpeedMultiplier"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Fire Rate</span>
+                            <div class="flex flex-col justify-center items-center w-[100%] gap-2">
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Equip Time
+                                            Seconds</span>
+                                    </div>
+                                    <div>
+                                        <span id="equipTimeSeconds"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span id="fireRate" class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Magazine Size</span>
+                                    </div>
+                                    <div>
+                                        <span id="magazineSize"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">First Bullet
-                                        Accuracy</span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Reload Time
+                                            Seconds</span>
+                                    </div>
+                                    <div>
+                                        <span id="reloadTimeSeconds"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span id="firstBulletAccuracy"
-                                        class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Run Speed
-                                        Multiplier</span>
-                                </div>
-                                <div>
-                                    <span id="runSpeedMultiplier"
-                                        class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Cost Weapon</span>
+                                    </div>
+                                    <div>
+                                        <span id="costWeapon" class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex flex-row justify-center items-center w-[100%]">
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Equip Time Seconds</span>
-                                </div>
-                                <div>
-                                    <span id="equipTimeSeconds"
-                                        class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Magazine Size</span>
-                                </div>
-                                <div>
-                                    <span id="magazineSize" class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Reload Time Seconds</span>
-                                </div>
-                                <div>
-                                    <span id="reloadTimeSeconds"
-                                        class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 w-[25%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Cost Weapon</span>
-                                </div>
-                                <div>
-                                    <span id="costWeapon" class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="flex flex-col items-center gap-4 w-[100%]">
-                    <div>
-                        <span class="text-3xl text-center text-black dark:text-white">Damage Ranges</span>
-                    </div>
-                    <div class="flex flex-col justify-between gap-2 w-[100%]">
-                        <div class="flex flex-row justify-center items-center w-[100%]">
-                            <div class="flex flex-col items-center gap-1 w-[33%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Body Damage</span>
-                                </div>
-                                <div>
-                                    <span id="bodyDamage" class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 w-[33%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Head Damage</span>
-                                </div>
-                                <div>
-                                    <span id="headDamage" class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-1 w-[33%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Leg Damage</span>
-                                </div>
-                                <div>
-                                    <span id="legDamage" class="text-xl text-slate-700 dark:text-slate-300"></span>
-                                </div>
-                            </div>
+                    <div class="flex flex-col items-center gap-4 w-[100%]">
+                        <div>
+                            <span class="text-3xl text-center text-black dark:text-white">Damage Ranges</span>
                         </div>
-                        <div class="flex flex-row justify-center items-center w-[100%]">
-                            <div class="flex flex-col items-center gap-1 w-[33%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Range Start Meters</span>
+                        <div class="flex flex-row justify-between gap-4 h-[100%] w-[100%]">
+                            <div class="flex flex-col justify-center items-center w-[100%] gap-2">
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Body Damage</span>
+                                    </div>
+                                    <div>
+                                        <span id="bodyDamage" class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span id="rangeStartMeters"
-                                        class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Head Damage</span>
+                                    </div>
+                                    <div>
+                                        <span id="headDamage" class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Leg Damage</span>
+                                    </div>
+                                    <div>
+                                        <span id="legDamage" class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-center gap-1 w-[33%] text-center">
-                                <div>
-                                    <span class="text-xl text-slate-700 dark:text-slate-300">Range End Meters</span>
+                            <div class="flex flex-col justify-center items-center w-[100%] gap-2">
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Range Start
+                                            Meters</span>
+                                    </div>
+                                    <div>
+                                        <span id="rangeStartMeters"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span id="rangeEndMeters" class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                <div class="flex flex-col items-center gap-1 text-center">
+                                    <div>
+                                        <span class="text-xl text-slate-700 dark:text-slate-300">Range End Meters</span>
+                                    </div>
+                                    <div>
+                                        <span id="rangeEndMeters"
+                                            class="text-xl text-slate-700 dark:text-slate-300"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -280,7 +287,9 @@
                 </div>
             </div>
         </div>
-        <div id="video" class="hidden flex justify-center"></div>
+        <div id="video" class="hidden flex justify-center items-center h-[570px]">
+            <span class="text-2xl text-black dark:text-white">There isn't a video</span>
+        </div>
     </main>
 </body>
 
