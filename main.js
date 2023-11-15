@@ -31,9 +31,11 @@ const modeSwitching = () => {
 const appearCharacters = () => {
     let buttonCharacter = document.getElementById("buttonCharacter");
     buttonCharacter.addEventListener('click', () => {
+        let spanSelector = document.getElementById("selector");
         let divCharacters = document.getElementById("characters");
         let divSkins = document.getElementById("skins");
         let divVideo = document.getElementById("video");
+        spanSelector.innerHTML = 'CHARACTER SELECTOR';
         divCharacters.classList.remove("hidden");
         divSkins.classList.add("hidden");
         divVideo.classList.add("hidden");
@@ -43,9 +45,11 @@ const appearCharacters = () => {
 const appearSkins = () => {
     let buttonSkin = document.getElementById("buttonSkin");
     buttonSkin.addEventListener('click', () => {
+        let spanSelector = document.getElementById("selector");
         let divCharacters = document.getElementById("characters");
         let divSkins = document.getElementById("skins");
         let divVideo = document.getElementById("video");
+        spanSelector.innerHTML = 'SKIN SELECTOR';
         divSkins.classList.remove("hidden");
         divCharacters.classList.add("hidden");
         divVideo.classList.add("hidden");
@@ -53,9 +57,11 @@ const appearSkins = () => {
 }
 
 const appearDirectSkins = () => {
+    let spanSelector = document.getElementById("selector");
     let divCharacters = document.getElementById("characters");
     let divSkins = document.getElementById("skins");
     let divVideo = document.getElementById("video");
+    spanSelector.innerHTML = 'SKIN SELECTOR';
     divSkins.classList.remove("hidden");
     divCharacters.classList.add("hidden");
     divVideo.classList.add("hidden");
@@ -64,9 +70,11 @@ const appearDirectSkins = () => {
 const appearVideo = () => {
     let buttonVideo = document.getElementById("buttonVideo");
     buttonVideo.addEventListener('click', () => {
+        let spanSelector = document.getElementById("selector");
         let divCharacters = document.getElementById("characters");
         let divSkins = document.getElementById("skins");
         let divVideo = document.getElementById("video");
+        spanSelector.innerHTML = 'SKIN SELECTOR';
         divVideo.classList.remove("hidden");
         divCharacters.classList.add("hidden");
         divSkins.classList.add("hidden");
@@ -74,9 +82,11 @@ const appearVideo = () => {
 }
 
 const appearDirectVideo = () => {
+    let spanSelector = document.getElementById("selector");
     let divCharacters = document.getElementById("characters");
     let divSkins = document.getElementById("skins");
     let divVideo = document.getElementById("video");
+    spanSelector.innerHTML = 'SKIN SELECTOR';
     divVideo.classList.remove("hidden");
     divCharacters.classList.add("hidden");
     divSkins.classList.add("hidden");
@@ -170,6 +180,7 @@ const generateWeapons = (weapons) => {
     weapons.forEach(element => {
         const imgWeapon = document.createElement('img');
         imgWeapon.style.width = '80px';
+        //imgWeapon.style.height = '80px';
         imgWeapon.src = element.displayIcon;
 
         imgWeapon.addEventListener('click', function () {
