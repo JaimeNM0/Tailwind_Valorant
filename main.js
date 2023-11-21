@@ -123,10 +123,8 @@ const loadAgents = () => {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             let dataCharacters = xhr.response.data;
 
-            //let listaImagenes = [];
             dataCharacters.forEach(element => {
                 if (element.displayIcon != null && element.fullPortrait != null) {
-                    //listaImagenes.push({ name: element.displayName, icon: element.displayIcon, full: element.fullPortrait });
                     let divCharacterMiniatures = document.getElementById('characterMiniatures');
 
                     const miniature = document.createElement('img');
@@ -142,7 +140,6 @@ const loadAgents = () => {
                     divCharacterMiniatures.appendChild(miniature);
                 }
             });
-            //console.log(listaImagenes);
         }
     }
 
@@ -202,7 +199,6 @@ const generateWeapons = (weapons) => {
     weapons.forEach(element => {
         const imgWeapon = document.createElement('img');
         imgWeapon.style.width = '80px';
-        //imgWeapon.style.height = '80px';
         imgWeapon.src = element.displayIcon;
 
         imgWeapon.addEventListener('click', function () {
@@ -210,6 +206,7 @@ const generateWeapons = (weapons) => {
             divVideo.innerHTML = '';
             spanVideo(divVideo);
             console.log(element.uuid);
+            removeSpanSkin();
             weaponsInformation(element);
             let miniatureSkins = document.getElementById('miniatureSkins');
             miniatureSkins.innerHTML = '';
@@ -246,7 +243,6 @@ const weaponsInformation = (weapon) => {
 
     imgFullPictureSkin.innerHTML = '';
     imgFullPictureSkin.style.width = '512px';
-    //imgFullPictureSkin.style.height = '200px';
     imgFullPictureSkin.src = weapon.displayIcon;
     nameWeapon.innerHTML = weapon.displayName;
 
@@ -279,8 +275,6 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE && skin.displayIcon !== null) {
             const skinDetail = xhr.response.data;
-            //console.log(skinDetail);
-
 
             const imgSkin = document.createElement('img');
             imgSkin.style.width = '100px';
@@ -289,7 +283,6 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
             imgSkin.src = skin.displayIcon;
 
             imgSkin.addEventListener('click', function () {
-                //console.log(skinDetail);
                 let imgFullPictureSkin = document.getElementById('imgFullPictureSkin');
                 imgFullPictureSkin.src = skinDetail.displayIcon;
                 let divVideo = document.getElementById('video');
@@ -312,6 +305,15 @@ const loadAndGenerateWeaponsSkinsData = (skin, miniatureSkins) => {
     }
 
     xhr.send();
+}
+
+const removeSpanSkin = () => {
+    let divSpanSkins = document.getElementById("spanSkins");
+    let divMiniatureSkins = document.getElementById("miniatureSkins");
+    let divInfoSkins = document.getElementById("infoSkins");
+    divInfoSkins.classList.remove("hidden");
+    divMiniatureSkins.classList.remove("hidden");
+    divSpanSkins.classList.add("hidden");
 }
 
 const spanVideo = (divVideo) => {
